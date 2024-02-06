@@ -9,6 +9,6 @@ COPY ../poetry.lock pyproject.toml ./
 
 COPY ../file_processing .
 
-RUN poetry install
+RUN poetry install --without dev
 
 CMD ["poetry", "run", "celery", "-A", "file_processing", "worker", "--loglevel=INFO"]

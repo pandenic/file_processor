@@ -1,3 +1,5 @@
+"""Describes custom serializers for an Api app."""
+
 from rest_framework import serializers
 
 from file.models import File
@@ -11,11 +13,11 @@ class FileSerializer(serializers.ModelSerializer):
 
         model = File
         fields = (
-            'file',
-            'uploaded_at',
-            'processed',
+            "file",
+            "uploaded_at",
+            "processed",
         )
         read_only_fields = (
-            'uploaded_at',
-            'processed',
+            "uploaded_at",
+            "processed",
         )

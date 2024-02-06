@@ -7,22 +7,50 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='File',
+            name="File",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('file', models.FileField(help_text='File to upload', upload_to='uploaded_files/', verbose_name='File')),
-                ('uploaded_at', models.DateTimeField(auto_now_add=True, help_text='File upload date', verbose_name='Upload date')),
-                ('processed', models.BooleanField(default=False, help_text='Shows state of file processing', verbose_name='Is processed')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "file",
+                    models.FileField(
+                        help_text="File to upload",
+                        upload_to="uploaded_files/",
+                        verbose_name="File",
+                    ),
+                ),
+                (
+                    "uploaded_at",
+                    models.DateTimeField(
+                        auto_now_add=True,
+                        help_text="File upload date",
+                        verbose_name="Upload date",
+                    ),
+                ),
+                (
+                    "processed",
+                    models.BooleanField(
+                        default=False,
+                        help_text="Shows state of file processing",
+                        verbose_name="Is processed",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'File',
-                'verbose_name_plural': 'Files',
-                'ordering': ('uploaded_at',),
+                "verbose_name": "File",
+                "verbose_name_plural": "Files",
+                "ordering": ("uploaded_at",),
             },
         ),
     ]
