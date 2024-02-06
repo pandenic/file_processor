@@ -24,9 +24,7 @@ class FileViewSet(ListCreateViewSet):
         instance = serializer.save()
         for filetype, extensions in ALLOWED_FILE_TYPE.items():
             root, ext = os.path.splitext(instance.file.name)
-            print(root, ext)
             if ext in extensions:
-                print("______", ext)
                 CELERY_FILE_TASKS_MAP[filetype].delay(instance.id)
                 return
         CELERY_FILE_TASKS_MAP["other"].delay(instance.id)

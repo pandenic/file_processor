@@ -1,4 +1,4 @@
-"""Settings"""
+"""Settings."""
 
 import os
 from pathlib import Path
@@ -88,7 +88,7 @@ DATABASES = {
         "PASSWORD": os.getenv("POSTGRES_PASSWORD", default="postgres"),
         "HOST": os.getenv("POSTGRES_HOST", default="postgres"),
         "PORT": os.getenv("POSTGRES_PORT", default=5432),
-    }
+    },
 }
 
 
