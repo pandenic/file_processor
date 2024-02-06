@@ -1,11 +1,13 @@
 from django.db import models
 
+from django.conf import settings
+
 
 class File(models.Model):
     file = models.FileField(
         verbose_name='File',
         help_text='File to upload',
-        upload_to='files/'
+        upload_to=settings.FILES_SAVE_LOCATION
     )
     uploaded_at = models.DateTimeField(
         verbose_name='Upload date',
@@ -21,10 +23,10 @@ class File(models.Model):
     class Meta:
         """Describe settings for the Tag model."""
 
-        ordering = ('uploaded_at',)
+        ordering = ('-uploaded_at',)
         verbose_name = 'File'
         verbose_name_plural = 'Files'
 
     def __str__(self):
         """Show a name of a file."""
-        return self.name
+        return self.file.name

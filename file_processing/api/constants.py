@@ -5,3 +5,4 @@ class HTTPMethods:
     GET = 'get'
     POST = 'post'
     PATCH = 'patch'
+

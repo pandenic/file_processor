@@ -1,8 +1,11 @@
+import os
+
 from api.constants import HTTPMethods
 from api.mixins import ListCreateViewSet
 from api.serializers import FileSerializer
-from api.tasks import process_file
 from file.models import File
+from file.tasks import CELERY_FILE_TASKS_MAP
+from file_processing.settings import ALLOWED_FILE_TYPE
 
 
 class FileViewSet(ListCreateViewSet):
@@ -15,4 +18,12 @@ class FileViewSet(ListCreateViewSet):
 
     def perform_create(self, serializer):
         instance = serializer.save()
-        process_file(instance.id).delay()
+        for filetype, extensions in ALLOWED_FILE_TYPE.items():
+            root, ext = os.path.splitext(instance.file.name)
+            print(root, ext)
+            if ext in extensions:
+                print('______', ext)
+                CELERY_FILE_TASKS_MAP[filetype].delay(instance.id)
+                return
+        CELERY_FILE_TASKS_MAP['other'].delay(instance.id)
+    
