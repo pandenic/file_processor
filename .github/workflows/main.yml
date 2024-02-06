@@ -52,7 +52,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./
-          file: {context}/infra/file_processing.Dockerfile
+          file: infra/file_processing.Dockerfile
           push: true
           tags: pandenic/picasso_django:latest
   build_celery_worker_and_push_to_docker_hub:
@@ -73,7 +73,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./
-          file: {context}/infra/celery_worker.Dockerfile
+          file: infra/celery_worker.Dockerfile
           push: true
           tags: pandenic/picasso_worker:latest
   deploy:
