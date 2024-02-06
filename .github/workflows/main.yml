@@ -33,7 +33,7 @@ jobs:
         DB_HOST: 127.0.0.1
         DB_PORT: 5432
       run: |
-        flake8 file_processing/
+        poetry run flake8 file_processing/
   build_django_and_push_to_docker_hub:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
