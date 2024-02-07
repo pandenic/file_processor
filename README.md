@@ -32,14 +32,14 @@ docker compose up -d
 
 5. Сервер запускается по адресу http://localhost/
 
-### Конечные точки:
+### Endpoints:
 
 http://localhost/api/upload/ | Вы можете загрузить туда файл с помощью POST-запроса.
 http://localhost/api/file/ | вы можете получить данные всех файлов из базы данных с помощью GET запроса.
 
-# Развертывание
+# Deploy
 
-Развертывание с помощью доступных GitHub Actions.
+Deploy с помощью доступных GitHub Actions.
 (pipline в .github/workflows/main.yml)
 
 ---
