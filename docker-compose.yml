@@ -50,7 +50,7 @@ services:
       dockerfile: infra/file_processing.Dockerfile
     env_file: .env
     volumes:
-      - ./file_processing/uploaded_files:/app/uploaded_files
+      - ./file_processing/media/uploaded_files:/app/media/uploaded_files
       - static:/app/staticfiles
     ports:
       - "8000:8000"
@@ -64,7 +64,7 @@ services:
       context: ./
       dockerfile: infra/celery_worker.Dockerfile
     volumes:
-      - ./file_processing/uploaded_files:/app/uploaded_files
+      - ./file_processing/media/uploaded_files:/app/media/uploaded_files
     depends_on:
       rabbitmq:
         condition: service_healthy

@@ -81,7 +81,7 @@ docker compose up -d
 ### Endpoints:
 
 http://localhost/api/upload/ | you could upload file there with POST request
-http://localhost/api/file/ | you could get all files data from database with GET request
+http://localhost/api/files/ | you could get all files data from database with GET request
 
 # Deploy
 

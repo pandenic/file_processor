@@ -1,6 +1,7 @@
 """Settings."""
 
 import os
+import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -89,6 +90,8 @@ DATABASES = {
     },
 }
 
+if "test" in sys.argv or "test_coverage" in sys.argv:
+    DATABASES["default"]["ENGINE"] = "django.db.backends.sqlite3"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -140,9 +143,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CELERY_BROKER_URL = "amqp://rmuser:rmpassword@rabbitmq"
 
-FILES_SAVE_LOCATION = "uploaded_files/"
-
 ALLOWED_FILE_TYPE = {
     "image": (".gif", ".png", ".jpg", ".jpeg"),
     "text": (".txt", ".doc", ".docx"),
 }
+
+FILES_SAVE_LOCATION = "uploaded_files/"
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")

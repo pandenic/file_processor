@@ -9,9 +9,11 @@ urlpatterns = (
     path(
         "upload/",
         FileViewSet.as_view({HTTPMethod.POST: "create"}),
+        name="upload",
     ),
     path(
         "files/",
         FileViewSet.as_view({HTTPMethod.GET: "list"}),
+        name="files",
     ),
 )
