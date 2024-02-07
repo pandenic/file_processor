@@ -5,9 +5,9 @@ WORKDIR /app
 RUN pip install --upgrade pip && \
     pip install poetry
 
-COPY ../poetry.lock pyproject.toml ./
+COPY poetry.lock pyproject.toml ./
 
-COPY ../file_processing .
+COPY file_processing .
 
 RUN poetry install --without dev
 

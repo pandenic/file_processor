@@ -1,4 +1,5 @@
 """Describe Celery app settings."""
+
 import os
 
 from celery import Celery

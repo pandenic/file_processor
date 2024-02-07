@@ -1,11 +1,12 @@
 """Describes custom views for Api app."""
+
 import os
 
-from api.constants import HTTPMethods
+from api.constants import HTTPMethod
 from api.mixins import ListCreateViewSet
 from api.serializers import FileSerializer
+from api.tasks import CELERY_FILE_TASKS_MAP
 from file.models import File
-from file.tasks import CELERY_FILE_TASKS_MAP
 from file_processing.settings import ALLOWED_FILE_TYPE
 
 
@@ -15,8 +16,8 @@ class FileViewSet(ListCreateViewSet):
     queryset = File.objects.all()
     serializer_class = FileSerializer
     http_method_names = (
-        HTTPMethods.GET,
-        HTTPMethods.POST,
+        HTTPMethod.GET,
+        HTTPMethod.POST,
     )
 
     def perform_create(self, serializer):
